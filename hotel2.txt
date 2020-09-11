@@ -26,10 +26,6 @@ GROUP BY
 
 JOIN
 
-    • Come si chiamano gli ospiti che hanno fatto più di due prenotazioni?
-
-
-
     • Stampare tutti gli ospiti per ogni prenotazione
 
       SELECT prenotazioni_has_ospiti.prenotazione_id, ospiti.name, ospiti.lastname
@@ -71,3 +67,9 @@ JOIN
       	WHERE prenotazioni.id = 7
 
     • Le stanze sono state tutte prenotate almeno una volta? (Visualizzare le stanze non ancora prenotate)
+
+      SELECT room_number, floor, beds
+      FROM stanze
+          LEFT JOIN prenotazioni
+              ON stanze.id = prenotazioni.stanza_id
+          WHERE stanza_id IS NULL
